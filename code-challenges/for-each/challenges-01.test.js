@@ -39,20 +39,17 @@ Then, write a function named removeElements that takes in an array and a callbac
 Return the modified array.
 ------------------------------------------------------------------------------------------------ */
 
-const removeOne = (num, arr) => {
-  // Solution code here...
-  if ( num % 3 == 2){
-      arr.pop();
+const removeOne = (number, array) => {
+  if ( number % 3 == 2){
+    array.pop();
   }
-
 };
 
-const removeElements = (arr, callback) => {
-  // Solution code here...
-  for (let i = 0; i < arr.length; i ++){
-      callback(arr[i], arr);
+const removeElements = (array, callback) => {
+  for (let i = 0; i < array.length; i ++){
+    callback(array[i], array);
   }
-  return arr;
+  return array;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -60,12 +57,11 @@ CHALLENGE 4
 Write a function named removeWithForEach that produces the same output as challenge 3, but uses forEach.
 ------------------------------------------------------------------------------------------------ */
 
-const removeWithForEach = (arr, callback) => {
-  // Solution code here...
-  arr.forEach(function(i) {
-      callback(i, arr);
+const removeWithForEach = (array, callback) => {
+  array.forEach(function(i) {
+    callback(i, array);
   });
-  return arr;
+  return array;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -75,14 +71,13 @@ This function should use forEach again, but rather than taking in a callback as 
 This anonymous function should accept up to three arguments: the element, the index, and the array.
 ------------------------------------------------------------------------------------------------ */
 
-const removeWithAnon = (arr) => {
-  // Solution code here...
-arr.forEach(function(i) {
-    if ( i % 3 == 2){
-        arr.pop();
+const removeWithAnon = (array) => {
+  array.forEach(function(i) {
+    if (i % 3 == 2){
+      array.pop();
     }
-});
-return arr;
+  });
+  return array;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -99,16 +94,14 @@ The inventory is formatted like this:
 This function should use forEach to populate your grocery list based on the store's inventory. If the item is available, add it to your list. Return the final list.
 ------------------------------------------------------------------------------------------------ */
 
-const createList = (availableItems) => {
-  // Solution code here...
+const createList = (items) => {
   let list = [];
-availableItems.forEach(function(i) {
-  if (i.available == true){
-    list.push(i.name);
-  };
-});
-return list;
-
+  items.forEach(function(i) {
+    if (i.available == true){
+      list.push(i.name);
+    };
+  });
+  return list;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -122,21 +115,20 @@ Iterate over the array using forEach to determine the output based on several ru
 Return the resulting output array.
 ------------------------------------------------------------------------------------------------ */
 
-const fizzbuzz = (arr) => {
-  // Solution code here...
-  let outputArray = [];
-  arr.forEach(function(num) {
-      if (num % 3 == 0 && num % 5 ==0 ){
-          outputArray.push("Fizz Buzz");
-      } else if (num % 5 == 0) {
-          outputArray.push("Buzz");
-      } else if (num % 3 == 0) {
-          outputArray.push("Fizz");          
-      } else {
-          outputArray.push(num);
-      }      
+const fizzbuzz = (array) => {
+  let output = [];
+  array.forEach(function(number) {
+    if (number % 3 == 0 && number % 5 ==0 ){
+      output.push("Fizz Buzz");
+    } else if (number % 5 == 0) {
+      output.push("Buzz");
+    } else if (number % 3 == 0) {
+      output.push("Fizz");          
+    } else {
+      output.push(number);
+    }      
   });
-  return outputArray;
+  return output;
 };
 
 /* ------------------------------------------------------------------------------------------------
