@@ -24,12 +24,11 @@ Return the modified array.
 
 const addValues = (array, value) => array.push(value);
 
-const addNumbers = (num, arr, times, callback) => {
-  // Solution code here...
-for (let i = 0; i < times; i++){
-    callback(arr, num);
-}
-return arr;
+const addNumbers = (number, array, times, callback) => {
+  for (let i = 0; i < times; i++){
+    callback(array, number);
+  }
+  return array;
 };
 
 /* ------------------------------------------------------------------------------------------------
