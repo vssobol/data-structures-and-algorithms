@@ -26,7 +26,7 @@ Write a function named citiesAtoJ that takes in an array of city names and uses 
 ------------------------------------------------------------------------------------------------ */
 
 const citiesAtoJ = (arr) => {
-  // Solution code here...
+    //code
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -37,9 +37,7 @@ If the user enters any of these four inputs, return true. For any other input, r
 Do not use the vertical bar (pipe) in your pattern.
 ------------------------------------------------------------------------------------------------ */
 
-const matchMonth = (input) => {
-  // Solution code here...
-};
+const matchMonth = (input) => /^[Oo](ct\b|ctober)/.test(input);
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5
@@ -48,9 +46,7 @@ For example, if given the string "Hello, and have a wonderful day!", the word "H
 The expected output of "Hello, and have a wonderful day!" is ["and ", "have ", "a ", "wonderful "].
 ------------------------------------------------------------------------------------------------ */
 
-const noPunctuation = str => {
-  // Solution code here...
-};
+const noPunctuation = str => str.match(/\w+\s/g);
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 6
