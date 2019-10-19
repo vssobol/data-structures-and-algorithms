@@ -6,7 +6,7 @@ Write a function named greeting that takes in a string and returns the string in
 Then, write a function named speaker that takes in a string and a callback function. The speaker function should return the string in all uppercase letters only by invoking the callback.
 ------------------------------------------------------------------------------------------------ */
 
-const greeting = (text) => text.toUpperCase();
+const greeting = (word) => word.toUpperCase();
 
 const speaker = (message, callback) => callback(message);
 
@@ -22,13 +22,13 @@ Within the addNumbers function, invoke the callback function as many times as ne
 Return the modified array.
 ------------------------------------------------------------------------------------------------ */
 
-const addValues = (array, value) => array.push(value);
+const addValues = (arr, value) => arr.push(value);
 
-const addNumbers = (number, array, times, callback) => {
+const addNumbers = (num, arr, times, callback) => {
   for (let i = 0; i < times; i++){
-    callback(array, number);
+    callback(arr, num);
   }
-  return array;
+  return arr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -39,17 +39,17 @@ Then, write a function named removeElements that takes in an array and a callbac
 Return the modified array.
 ------------------------------------------------------------------------------------------------ */
 
-const removeOne = (number, array) => {
-  if ( number % 3 == 2){
-    array.pop();
+const removeOne = (num, arr) => {
+  if ( num % 3 == 2){
+    arr.pop();
   }
 };
 
-const removeElements = (array, callback) => {
-  for (let i = 0; i < array.length; i ++){
-    callback(array[i], array);
+const removeElements = (arr, callback) => {
+  for (let i = 0; i < arr.length; i ++){
+    callback(arr[i], arr);
   }
-  return array;
+  return arr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -57,11 +57,11 @@ CHALLENGE 4
 Write a function named removeWithForEach that produces the same output as challenge 3, but uses forEach.
 ------------------------------------------------------------------------------------------------ */
 
-const removeWithForEach = (array, callback) => {
-  array.forEach(function(i) {
-    callback(i, array);
+const removeWithForEach = (arr, callback) => {
+  arr.forEach(function(i) {
+    callback(i, arr);
   });
-  return array;
+  return arr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -71,13 +71,13 @@ This function should use forEach again, but rather than taking in a callback as 
 This anonymous function should accept up to three arguments: the element, the index, and the array.
 ------------------------------------------------------------------------------------------------ */
 
-const removeWithAnon = (array) => {
-  array.forEach(function(i) {
+const removeWithAnon = (arr) => {
+  arr.forEach(function(i) {
     if (i % 3 == 2){
-      array.pop();
+      arr.pop();
     }
   });
-  return array;
+  return arr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -115,17 +115,17 @@ Iterate over the array using forEach to determine the output based on several ru
 Return the resulting output array.
 ------------------------------------------------------------------------------------------------ */
 
-const fizzbuzz = (array) => {
+const fizzbuzz = (arr) => {
   let output = [];
-  array.forEach(function(number) {
-    if (number % 3 == 0 && number % 5 ==0 ){
+  arr.forEach(function(num) {
+    if (num % 3 == 0 && num % 5 ==0 ){
       output.push("Fizz Buzz");
-    } else if (number % 5 == 0) {
+    } else if (num % 5 == 0) {
       output.push("Buzz");
-    } else if (number % 3 == 0) {
+    } else if (num % 3 == 0) {
       output.push("Fizz");          
     } else {
-      output.push(number);
+      output.push(num);
     }      
   });
   return output;
