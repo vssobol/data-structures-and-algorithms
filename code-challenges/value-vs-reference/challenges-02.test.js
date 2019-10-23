@@ -7,9 +7,9 @@ Write a function that appends ' The end.' to a string, and returns the modified 
 ------------------------------------------------------------------------------------------------ */
 
 const appendTheEnd = (str) => {
-    let firstVar = str;
-    let modified = `${firstVar} The end.`;
-    return modified;
+  let firstVar = str;
+  let modified = `${firstVar} The end.`;
+  return modified;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -23,8 +23,8 @@ console.log(a) prints [1, 2, 3, 1]
 ------------------------------------------------------------------------------------------------ */
 
 const appendFirstToLast = (arr) => {
-    const firstVal = arr[0];
-    arr.push(firstVal);
+  const firstVal = arr[0];
+  arr.push(firstVal);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -51,9 +51,9 @@ console.log(people[1].isAuthor) prints true
 ------------------------------------------------------------------------------------------------ */
 
 const setStatusAsAuthor = (people) => {
-    people.forEach(function(element){
-      element.isAuthor = true;
-    });
+  people.forEach(function(element){
+    element.isAuthor = true;
+  });
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -69,9 +69,9 @@ console.log(a) prints [1, 2, 3, 4]
 ------------------------------------------------------------------------------------------------ */
 
 const append = (arr1, arr2) => {
-    arr2.forEach(function(element){
-      arr1.push(element);
-    });
+  arr2.forEach(function(element){
+    arr1.push(element);
+  });
 };
 
 /* ------------------------------------------------------------------------------------------------
