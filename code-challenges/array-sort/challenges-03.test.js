@@ -5,7 +5,7 @@ CHALLENGE 1
 Write a function named sortBackwards that takes in an array of numbers and returns the same array, with the numbers sorted, highest to smallest.
 ------------------------------------------------------------------------------------------------ */
 
-const sortBackwards = (arr) => arr.sort((a,b) => a - b).reverse();
+const sortBackwards = (arr) => arr.sort((a,b) => a > b).reverse();
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 2
@@ -21,7 +21,7 @@ CHALLENGE 3
 Write a function named sortByLength that takes in an array of strings and returns the same array, with the strings sorted by their length, lowest to highest.
 ------------------------------------------------------------------------------------------------ */
 
-const sortByLength = (arr) => arr.sort((a,b) => a.length - b.length);
+const sortByLength = (arr) => arr.sort((a,b) => a.length > b.length);
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 4
@@ -42,7 +42,7 @@ Here is an example of the input:
 ];
 ------------------------------------------------------------------------------------------------ */
 
-const sortByPrice = (arr) => arr.sort((a,b) => a.price - b.price);
+const sortByPrice = (arr) => arr.sort((a,b) => a.price > b.price);
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 6
@@ -50,7 +50,7 @@ Write a function named sortNumbersByLength that takes in an array of numbers and
 For example, [1, 14, 0.2, -281, 54782] is only correctly sorted in that order.
 ------------------------------------------------------------------------------------------------ */
 
-const sortNumbersByLength = (arr) => arr.sort((a,b) => a.toString().length - b.toString().length);
+const sortNumbersByLength = (arr) => arr.sort((a,b) => a.toString().length > b.toString().length);
 
 /*-----------------------------------------------------------------------------------------------
 CHALLENGE 7
@@ -96,6 +96,7 @@ function Meeting(dayOfWeek, start, end) {
   this.start = start;
   this.end = end;
 }
+
 const meetings = [
   new Meeting('Monday', '0900', '1000'),
   new Meeting('Wednesday', '1300', '1500'),
@@ -106,7 +107,16 @@ const meetings = [
 ];
 
 const sortMeetingsByDay = (arr) => {
-    // Solution code here...
+  const weekdays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
+  arr = arr.sort((a,b) => {
+    let x,y;
+    weekdays.forEach((day, index) => {
+      if(day == a.dayOfWeek){ x = index; }
+      if(day == b.dayOfWeek){ y = index; }
+    })
+    return x > y;
+  })
+  return arr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -117,7 +127,18 @@ You DO NOT need to use your solution to Challenge 9 in completing Challenge 10.
 ------------------------------------------------------------------------------------------------ */
 
 const sortSchedule = (arr) => {
-    // Solution code here...
+  const weekdays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
+  arr = arr.sort((a,b) => {
+    let x,y;
+    weekdays.forEach((day, index) => {
+      if(day == a.dayOfWeek){ x = index; }
+      if(day == b.dayOfWeek){ y = index; }
+    })
+    if(x > y){ return 1; }
+    else if(x < y){ return -1; }
+    else{ if(a.start > b.start){ return 1; } }
+  })
+  return arr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -223,25 +244,25 @@ describe('Testing challenge 8', () => {
   });
 });
 
-// describe('Testing challenge 9', () => {
-//   test('It should sort meetings by the day on which they happen', () => {
-//     const sortedMeetings = sortMeetingsByDay(meetings);
-//     expect(sortedMeetings.slice(0,2)).toEqual(expect.arrayContaining([new Meeting('Monday', '0900', '0945'), new Meeting('Monday', '0900', '1000')]));
-//     expect(sortedMeetings[2]).toStrictEqual(new Meeting('Tuesday', '1145', '1315'));
-//     expect(sortedMeetings.slice(3,5)).toEqual(expect.arrayContaining([new Meeting('Wednesday', '0930', '1000'), new Meeting('Wednesday', '1300', '1500')]));
-//     expect(sortedMeetings[5]).toStrictEqual(new Meeting('Friday', '1200', '1345'));
-//   });
-// });
+describe('Testing challenge 9', () => {
+  test('It should sort meetings by the day on which they happen', () => {
+    const sortedMeetings = sortMeetingsByDay(meetings);
+    expect(sortedMeetings.slice(0,2)).toEqual(expect.arrayContaining([new Meeting('Monday', '0900', '0945'), new Meeting('Monday', '0900', '1000')]));
+    expect(sortedMeetings[2]).toStrictEqual(new Meeting('Tuesday', '1145', '1315'));
+    expect(sortedMeetings.slice(3,5)).toEqual(expect.arrayContaining([new Meeting('Wednesday', '0930', '1000'), new Meeting('Wednesday', '1300', '1500')]));
+    expect(sortedMeetings[5]).toStrictEqual(new Meeting('Friday', '1200', '1345'));
+  });
+});
 
-// describe('Testing challenge 10', () => {
-//   test('It should sort meetings by when they happen', () => {
-//     expect(sortSchedule(meetings)).toStrictEqual([
-//       new Meeting('Monday', '0900', '0945'),
-//       new Meeting('Monday', '0900', '1000'),
-//       new Meeting('Tuesday', '1145', '1315'),
-//       new Meeting('Wednesday', '0930', '1000'),
-//       new Meeting('Wednesday', '1300', '1500'),
-//       new Meeting('Friday', '1200', '1345'),
-//     ]);
-//   });
-// });
+describe('Testing challenge 10', () => {
+  test('It should sort meetings by when they happen', () => {
+    expect(sortSchedule(meetings)).toStrictEqual([
+      new Meeting('Monday', '0900', '0945'),
+      new Meeting('Monday', '0900', '1000'),
+      new Meeting('Tuesday', '1145', '1315'),
+      new Meeting('Wednesday', '0930', '1000'),
+      new Meeting('Wednesday', '1300', '1500'),
+      new Meeting('Friday', '1200', '1345'),
+    ]);
+  });
+});
